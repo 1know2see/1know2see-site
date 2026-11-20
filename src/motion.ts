@@ -7,11 +7,64 @@ export function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+/**
+ * Resting type stays put. A from-tween only hides a line while that reveal is
+ * playing inside the viewport. Load, font swap, and hash jumps refresh the
+ * triggers; anything already past the end — or in view with a trigger that
+ * never played — is snapped to the end so it cannot stay clipped.
+ */
+let settleTimer = 0;
+let settleNeedsRefresh = false;
+
+function settleReveals(refresh = false): void {
+  if (prefersReducedMotion()) return;
+  if (refresh) ScrollTrigger.refresh();
+  for (const trigger of ScrollTrigger.getAll()) {
+    const anim = trigger.animation;
+    if (!anim || trigger.vars.scrub) continue;
+    const passedStart = trigger.progress > 0;
+    const revealing = trigger.isActive && anim.progress() > 0 && anim.progress() < 1;
+    if (passedStart && !revealing) anim.progress(1);
+  }
+}
+
+function scheduleSettle(refresh = false): void {
+  settleNeedsRefresh = settleNeedsRefresh || refresh;
+  window.clearTimeout(settleTimer);
+  settleTimer = window.setTimeout(() => {
+    const refreshNow = settleNeedsRefresh;
+    settleNeedsRefresh = false;
+    settleReveals(refreshNow);
+  }, 60);
+}
+
+function mountReveal(
+  targets: gsap.TweenTarget,
+  trigger: Element,
+  options: { y?: number; yPercent?: number; duration: number; ease: string; start: string; stagger?: number },
+): void {
+  const from: gsap.TweenVars = {
+    duration: options.duration,
+    ease: options.ease,
+    immediateRender: false,
+    scrollTrigger: {
+      trigger,
+      start: options.start,
+      toggleActions: "play none none none",
+    },
+  };
+  if (options.y != null) from.y = options.y;
+  if (options.yPercent != null) from.yPercent = options.yPercent;
+  if (options.stagger != null) from.stagger = options.stagger;
+  const tween = gsap.from(targets, from);
+  if (tween.scrollTrigger && tween.scrollTrigger.progress > 0) tween.progress(1);
+}
+
 export function initScrollMotion(): void {
   if (prefersReducedMotion()) return;
   const root = document.documentElement;
   if (root.dataset.motionReady === "true") {
-    ScrollTrigger.refresh();
+    settleReveals(true);
     return;
   }
   root.dataset.motionReady = "true";
@@ -19,30 +72,12 @@ export function initScrollMotion(): void {
   gsap.utils.toArray<HTMLElement>(".essay-line").forEach((line) => {
     const inner = line.querySelector<HTMLElement>(".line-in");
     if (!inner) return;
-    gsap.from(inner, {
-      yPercent: 110,
-      duration: 1.05,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: line,
-        start: "top 88%",
-        toggleActions: "play none none none",
-      },
-    });
+    mountReveal(inner, line, { yPercent: 110, duration: 1.05, ease: "power4.out", start: "top 88%" });
   });
 
   gsap.utils.toArray<HTMLElement>(".reveal").forEach((node) => {
     if (node.closest(".works, .essay")) return;
-    gsap.from(node, {
-      y: 28,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: node,
-        start: "top 88%",
-        toggleActions: "play none none none",
-      },
-    });
+    mountReveal(node, node, { y: 28, duration: 1, ease: "power3.out", start: "top 88%" });
   });
 
   const works = document.getElementById("works");
@@ -57,7 +92,11 @@ export function initScrollMotion(): void {
     gsap.to(inner ?? reveal, { y: 0, yPercent: 0, duration: 0.3, overwrite: "auto", ease: "power2.out" });
   });
 
-  void document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  window.addEventListener("hashchange", () => scheduleSettle(true));
+  window.addEventListener("scroll", () => scheduleSettle(false), { passive: true });
+  window.addEventListener("load", () => settleReveals(true));
+  void document.fonts?.ready.then(() => settleReveals(true));
+  window.requestAnimationFrame(() => settleReveals(true));
 }
 
 export function bindWorkMotion(list: HTMLElement): void {
@@ -68,18 +107,8 @@ export function bindWorkMotion(list: HTMLElement): void {
   });
   const items = list.querySelectorAll<HTMLElement>(".piece");
   if (!items.length) return;
-  gsap.from(items, {
-    y: 28,
-    duration: 0.9,
-    stagger: 0.08,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: list,
-      start: "top 86%",
-      toggleActions: "play none none none",
-    },
-  });
-  ScrollTrigger.refresh();
+  mountReveal(items, list, { y: 28, duration: 0.9, ease: "power3.out", start: "top 86%", stagger: 0.08 });
+  settleReveals(true);
 }
 
 export function initScrollSpy(): void {
