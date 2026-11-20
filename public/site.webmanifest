@@ -4,8 +4,8 @@
   "description": "Think deeper, see further",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#08090d",
-  "theme_color": "#08090d",
+  "background_color": "#E8E8E3",
+  "theme_color": "#E8E8E3",
   "lang": "zh-Hans",
   "icons": [
     {

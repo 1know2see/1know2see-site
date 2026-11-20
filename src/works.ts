@@ -13,6 +13,12 @@ const STATUS_TEXT: Record<string, { zh: string; en: string }> = {
   active: { zh: "在运行", en: "Active" },
 };
 
+const API_ROUTES: Array<[string, string]> = [
+  ["GET", "/projects"],
+  ["GET", "/health"],
+  ["D1", "database"],
+];
+
 function pad(value: number): string {
   return String(value).padStart(2, "0");
 }
@@ -20,7 +26,7 @@ function pad(value: number): string {
 function dayStamp(input: string): { iso: string; label: string } {
   const day = input.trim().slice(0, 10);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return { iso: "", label: input.trim() };
-  return { iso: day, label: day.replaceAll("-", ".") };
+  return { iso: day, label: day };
 }
 
 function element<K extends keyof HTMLElementTagNameMap>(
@@ -36,15 +42,15 @@ function element<K extends keyof HTMLElementTagNameMap>(
 
 function arrowIcon(): SVGSVGElement {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 24 24");
-  svg.setAttribute("width", "22");
-  svg.setAttribute("height", "22");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("width", "16");
+  svg.setAttribute("height", "16");
   svg.setAttribute("fill", "none");
   svg.setAttribute("aria-hidden", "true");
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", "M5 12h14M13 6l6 6-6 6");
+  path.setAttribute("d", "M3 8h10M9 4l4 4-4 4");
   path.setAttribute("stroke", "currentColor");
-  path.setAttribute("stroke-width", "1.5");
+  path.setAttribute("stroke-width", "1.4");
   path.setAttribute("stroke-linecap", "round");
   path.setAttribute("stroke-linejoin", "round");
   svg.append(path);
@@ -57,8 +63,33 @@ function applyRowLabel(row: HTMLElement): void {
   if (label) row.setAttribute("aria-label", label);
 }
 
+function poster(project: Project, indexLabel: string): HTMLElement {
+  const board = element("div", "api-poster");
+  const top = element("div", "api-poster-top");
+  top.append(element("span", "", indexLabel), element("span", "", project.name === "1know2see API" ? "WORKER" : "WORK"));
+  board.append(top);
+
+  if (project.name === "1know2see API") {
+    board.append(element("p", "api-poster-word", "API"));
+    const routes = element("ul", "api-poster-routes");
+    for (const [method, path] of API_ROUTES) {
+      const row = element("li");
+      row.append(element("span", "", method), element("span", "", path));
+      routes.append(row);
+    }
+    board.append(routes);
+  } else {
+    board.append(element("p", "api-poster-word api-poster-name", project.name));
+  }
+
+  const visual = element("div", "case-visual");
+  visual.setAttribute("aria-hidden", "true");
+  visual.append(board);
+  return visual;
+}
+
 export function refreshWorkLabels(root: ParentNode): void {
-  root.querySelectorAll<HTMLElement>(".piece-link[data-label-zh]").forEach(applyRowLabel);
+  root.querySelectorAll<HTMLElement>(".case[data-label-zh]").forEach(applyRowLabel);
 }
 
 export function renderWorks(projects: Project[], list: HTMLOListElement): void {
@@ -72,11 +103,13 @@ export function renderWorks(projects: Project[], list: HTMLOListElement): void {
     return;
   }
 
+  const total = pad(projects.length);
   projects.forEach((project, index) => {
-    const item = element("li", "piece reveal");
+    const item = element("li", "piece");
     item.dataset.projectId = project.id;
+    const indexLabel = pad(index + 1);
     const href = KNOWN_LINKS[project.name];
-    const row = href ? element("a", "piece-link") : element("div", "piece-link");
+    const row = href ? element("a", "case") : element("div", "case");
     if (row instanceof HTMLAnchorElement && href) {
       row.href = href;
       row.target = "_blank";
@@ -86,9 +119,11 @@ export function renderWorks(projects: Project[], list: HTMLOListElement): void {
       applyRowLabel(row);
     }
 
-    const main = element("span", "piece-main");
-    main.append(element("h3", "piece-title", project.name));
-    const description = element("span", "piece-desc");
+    const meta = element("div", "case-meta");
+    const indexRow = element("p", "case-index");
+    indexRow.append(element("span", "", indexLabel), element("span", "slash", "/"), element("span", "", total));
+    const title = element("h3", "case-title", project.name);
+    const description = element("p", "case-desc");
     const gloss = KNOWN_ZH[project.name];
     if (project.description && gloss) {
       const english = element("span", "en", project.description);
@@ -97,12 +132,8 @@ export function renderWorks(projects: Project[], list: HTMLOListElement): void {
     } else if (project.description) {
       description.append(element("span", "source", project.description));
     }
-    main.append(description);
 
-    const meta = element("span", "piece-meta");
-    const date = dayStamp(project.created_at);
-    const time = element("time", "piece-date", date.label || "—");
-    if (date.iso) time.dateTime = date.iso;
+    const facts = element("p", "case-facts");
     const status = element("span", "status");
     const knownStatus = STATUS_TEXT[project.status];
     if (knownStatus) {
@@ -112,13 +143,17 @@ export function renderWorks(projects: Project[], list: HTMLOListElement): void {
     } else if (project.status) {
       status.append(element("span", "source", project.status));
     }
-    meta.append(time, status);
+    const date = dayStamp(project.created_at);
+    const time = element("time", "", date.label || "—");
+    if (date.iso) time.dateTime = date.iso;
+    facts.append(status, time);
 
-    const go = element("span", "piece-go");
+    const go = element("span", "case-go");
     go.setAttribute("aria-hidden", "true");
     if (href) go.append(arrowIcon());
+    meta.append(indexRow, title, description, facts, go);
 
-    row.append(element("span", "piece-index", pad(index + 1)), main, meta, go);
+    row.append(poster(project, indexLabel), meta);
     item.append(row);
     list.append(item);
   });

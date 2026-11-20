@@ -6,10 +6,10 @@
     <title>1know2see — 一只见二</title>
     <meta
       name="description"
-      content="1know2see，一只见二。Think deeper, see further。个人工作室：把界面做清楚，把系统做稳，把文字留得住。"
+      content="1know2see，一只见二。Think deeper, see further。个人站：把界面做清楚，把系统做稳，把文字留得住。"
     />
     <meta name="author" content="1know2see" />
-    <meta name="theme-color" content="#08090d" />
+    <meta name="theme-color" content="#E8E8E3" />
     <link rel="canonical" href="https://1know2see.com/" />
     <meta property="og:title" content="1know2see — 一只见二" />
     <meta property="og:description" content="Think deeper, see further" />
@@ -28,8 +28,9 @@
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preload" href="/fonts/syne-latin-800.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/noto-serif-sc-simplified-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-sc-chinese-simplified-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-sc-chinese-simplified-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script src="/boot.js"></script>
     <link rel="stylesheet" href="/src/styles.css" />
     <script type="application/ld+json">
@@ -50,164 +51,217 @@
       <span class="en">Skip to content</span>
     </a>
 
-    <div
-      class="preloader"
-      id="preloader"
-      role="status"
-      data-label-zh="正在进入"
-      data-label-en="Entering"
-      aria-label="正在进入"
-    >
-      <div class="pl-lines" aria-hidden="true">
-        <i class="pl-line a"></i>
-        <i class="pl-line b"></i>
-      </div>
-      <div class="pl-copy">
-        <p class="pl-mark" translate="no"><span class="num">1</span>know<span class="num">2</span>see</p>
-        <p class="pl-zh" lang="zh-Hans">一只见二</p>
-      </div>
-      <button class="pl-skip" id="pl-skip" type="button">
-        <span class="zh">跳过</span>
-        <span class="en">Skip</span>
-      </button>
-    </div>
-
     <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="#top" translate="no">1know2see</a>
+      <div class="wrap header-inner">
+        <a
+          class="brand"
+          href="#top"
+          translate="no"
+          data-label-zh="1know2see，回到页首"
+          data-label-en="1know2see, back to top"
+          aria-label="1know2see，回到页首"
+        >1know2see</a>
         <nav class="nav" data-label-zh="页面" data-label-en="Sections" aria-label="页面">
+          <a href="#about"><span class="zh">关于</span><span class="en">About</span></a>
           <a href="#work"><span class="zh">作品</span><span class="en">Work</span></a>
-          <a href="#philosophy"><span class="zh">视线</span><span class="en">Sight</span></a>
-          <a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
+          <a href="#sight"><span class="zh">视线</span><span class="en">Sight</span></a>
         </nav>
-        <div class="lang header-lang" role="group" data-label-zh="语言" data-label-en="Language" aria-label="语言">
-          <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-          <span class="slash" aria-hidden="true">/</span>
-          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        <div class="header-tools">
+          <div class="lang" role="group" data-label-zh="语言" data-label-en="Language" aria-label="语言">
+            <button type="button" data-set-lang="zh" aria-pressed="true" data-label-zh="中文" data-label-en="Chinese" aria-label="中文">ZH</button>
+            <button type="button" data-set-lang="en" aria-pressed="false" data-label-zh="英文" data-label-en="English" aria-label="英文">EN</button>
+          </div>
+          <a
+            class="btn btn-small"
+            href="https://github.com/1know2see"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-label-zh="GitHub，在新标签页打开"
+            data-label-en="GitHub, opens in a new tab"
+            aria-label="GitHub，在新标签页打开"
+          >
+            GitHub
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
         </div>
       </div>
     </header>
 
     <main id="content" tabindex="-1">
       <section class="hero" id="top" aria-labelledby="site-title">
-        <div class="sight" aria-hidden="true">
-          <span class="sight-line a"></span>
-          <span class="sight-line b"></span>
-          <span class="sight-dot"></span>
-        </div>
-        <div class="wrap hero-copy">
-          <p class="kicker">
-            <span class="zh">01 — 个人工作室</span>
-            <span class="en">01 — Studio</span>
-          </p>
-          <h1 class="lockup" id="site-title">
-            <span class="zh-name" lang="zh-Hans" translate="no">一只见二</span>
-            <span class="wordmark" lang="en" translate="no"><span class="num">1</span>know<span class="num">2</span>see</span>
-          </h1>
-          <p class="tagline" lang="en" data-field="tagline">Think deeper, see further</p>
-          <div class="hero-foot">
+        <p class="watermark" aria-hidden="true" translate="no">1know2see</p>
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
             <p class="hero-aside">
-              <span class="zh">看见一件事，再看见它的另一面。</span>
-              <span class="en">See the thing. Then see its other side.</span>
+              <span class="zh">看见，是把事情想清楚之后的结果。先把眼前的事看清，再看见它藏着的另一面。</span>
+              <span class="en" lang="en">Seeing is what remains after the thinking is clear. See what is in front of you, then the side it keeps hidden.</span>
             </p>
-            <a class="scroll-cue" href="#philosophy">
-              <span class="zh">向下</span>
-              <span class="en">Scroll</span>
-              <i aria-hidden="true"></i>
+            <a class="btn" href="#work">
+              <span class="zh">看作品</span>
+              <span class="en">See the work</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </a>
+            <p class="hero-paren">
+              <span class="zh">（个人站）</span>
+              <span class="en">(Personal site)</span>
+            </p>
+          </div>
+          <h1 class="hero-title" id="site-title">
+            <span class="zh" lang="zh-Hans">
+              <span class="line">想得更深</span>
+              <span class="line">看得更远</span>
+              <span class="line">收成判断</span>
+              <span class="line">再做出来</span>
+            </span>
+            <span class="en" lang="en">
+              <span class="line">Think</span>
+              <span class="line">deeper.</span>
+              <span class="line">See</span>
+              <span class="line">further.</span>
+            </span>
+          </h1>
+          <div class="hero-visual">
+            <div class="hero-poster" aria-hidden="true">
+              <div class="poster-kicker">
+                <span>(见)</span>
+                <span>1KNOW2SEE</span>
+              </div>
+              <span class="poster-num">1</span>
+              <svg class="sight-mark" viewBox="0 0 48 160" fill="none">
+                <path d="M16 6v148" stroke="currentColor" stroke-width="1.5" />
+                <path d="M32 6v148" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="16" cy="78" r="5" fill="currentColor" />
+              </svg>
+              <span class="poster-num end">2</span>
+              <p class="poster-char" lang="zh-Hans">见</p>
+              <div class="poster-foot">
+                <span lang="zh-Hans">一只见二</span>
+                <span>THINK DEEPER, SEE FURTHER</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="philosophy chapter" id="philosophy" aria-labelledby="phil-title">
-        <div class="wrap">
-          <p class="idx">
-            <span class="zh">02 — 视线</span>
-            <span class="en">02 — Sight</span>
-          </p>
-          <h2 class="manifesto reveal" id="phil-title">
-            <span class="line"><span class="zh">想得更深。</span><span class="en">Think deeper.</span></span>
-            <span class="line indent"><span class="zh">看得更远。</span><span class="en">See further.</span></span>
-          </h2>
-          <p class="prose reveal">
-            <span class="zh">1know2see 来自「一只见二」。它既是名字，也是一种看法：先看见眼前的事，再看见它藏着的另一面。工作室因此得名。想把界面做清楚，把系统做稳，把文字留得住。</span>
-            <span class="en" lang="en">1know2see comes from 一只见二 — a name, and a way of looking. See what is in front of you, then the side it keeps hidden. The studio is named for that. Clear interfaces, steady systems, words worth staying with.</span>
-          </p>
-          <ol class="principles">
-            <li class="reveal">
-              <p class="principle-no">01</p>
-              <h3><span class="zh">深</span><span class="en">Deeper</span></h3>
-              <p>
-                <span class="zh">把问题看到底下，而不是停在表面。</span>
-                <span class="en">Follow the question down, not across the surface.</span>
-              </p>
-            </li>
-            <li class="reveal">
-              <p class="principle-no">02</p>
-              <h3><span class="zh">远</span><span class="en">Further</span></h3>
-              <p>
-                <span class="zh">今天的决定，要经得起下一步。</span>
-                <span class="en">A decision should still hold at the next step.</span>
-              </p>
-            </li>
-            <li class="reveal">
-              <p class="principle-no">03</p>
-              <h3><span class="zh">准</span><span class="en">Precise</span></h3>
-              <p>
-                <span class="zh">动效、文字与结构，都为意思服务。</span>
-                <span class="en">Motion, type, and structure serve the meaning.</span>
-              </p>
-            </li>
-          </ol>
+      <section class="essay band-ink" id="sight" aria-labelledby="sight-title">
+        <span id="philosophy" class="anchor"></span>
+        <div class="wrap essay-grid">
+          <div class="essay-rail">
+            <p class="eyebrow">
+              <span class="zh">（视线）</span>
+              <span class="en">(Sight)</span>
+            </p>
+            <p class="rail-copy">
+              <span class="zh">看见不是先发生的。想清楚，才看得见。</span>
+              <span class="en" lang="en">Seeing does not come first. Clarity does.</span>
+            </p>
+          </div>
+          <div class="essay-main">
+            <h2 class="essay-display" id="sight-title">
+              <span class="essay-line"><span class="line-in"><span class="zh">看见，</span><span class="en">Seeing</span></span></span>
+              <span class="essay-line"><span class="line-in"><span class="zh">是把事情</span><span class="en">comes after</span></span></span>
+              <span class="essay-line"><span class="line-in"><span class="zh">想清楚</span><span class="en">thinking</span></span></span>
+              <span class="essay-line"><span class="line-in"><span class="zh">之后的结果。</span><span class="en">clearly.</span></span></span>
+            </h2>
+            <ol class="principles">
+              <li>
+                <h3 class="essay-line principle-word"><span class="line-in"><span class="zh">深</span><span class="en">Deeper</span></span></h3>
+                <p>
+                  <span class="zh">把问题看到底下，而不是停在表面。</span>
+                  <span class="en" lang="en">Follow the question down, not across the surface.</span>
+                </p>
+              </li>
+              <li>
+                <h3 class="essay-line principle-word"><span class="line-in"><span class="zh">远</span><span class="en">Further</span></span></h3>
+                <p>
+                  <span class="zh">今天的决定，要经得起下一步。</span>
+                  <span class="en" lang="en">A decision should still hold at the next step.</span>
+                </p>
+              </li>
+              <li>
+                <h3 class="essay-line principle-word"><span class="line-in"><span class="zh">准</span><span class="en">Precise</span></span></h3>
+                <p>
+                  <span class="zh">动效、文字与结构，都为意思服务。</span>
+                  <span class="en" lang="en">Motion, type, and structure serve the meaning.</span>
+                </p>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
       <section class="work chapter" id="work" aria-labelledby="work-title">
         <div class="wrap">
-          <header class="sec-head reveal">
-            <h2 class="idx" id="work-title">
-              <span class="zh">03 — 作品</span>
-              <span class="en">03 — Work</span>
-            </h2>
-            <p class="sec-note">
-              <span class="zh">来自 api.1know2see.com</span>
-              <span class="en" lang="en">From api.1know2see.com</span>
-            </p>
-          </header>
-          <ol class="works" id="works">
-            <li class="piece reveal" data-project-id="1">
+          <div class="work-layout">
+            <header class="work-label">
+              <h2 class="sec-label" id="work-title">
+                <i class="dot" aria-hidden="true"></i>
+                <span class="zh">作品</span>
+                <span class="en">Works</span>
+              </h2>
               <a
-                class="piece-link"
-                href="https://api.1know2see.com"
+                class="source-note"
+                href="https://api.1know2see.com/projects"
                 target="_blank"
                 rel="noopener noreferrer"
-                data-label-zh="1know2see API，在新标签页打开接口"
-                data-label-en="1know2see API, open the API in a new tab"
-                aria-label="1know2see API，在新标签页打开接口"
-              >
-                <span class="piece-index">01</span>
-                <span class="piece-main">
-                  <h3 class="piece-title">1know2see API</h3>
-                  <span class="piece-desc">
-                    <span class="zh">我的第一个 Cloudflare Workers 与 D1 项目</span>
-                    <span class="en" lang="en">My first Cloudflare Workers and D1 project</span>
-                  </span>
-                </span>
-                <span class="piece-meta">
-                  <time datetime="2026-10-25">2026.10.25</time>
-                  <span class="status">
-                    <span class="zh">在运行</span>
-                    <span class="en" lang="en">Active</span>
-                  </span>
-                </span>
-                <span class="piece-go" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </a>
-            </li>
-          </ol>
+                data-label-zh="作品目录，在新标签页打开接口"
+                data-label-en="Project list, open the API in a new tab"
+                aria-label="作品目录，在新标签页打开接口"
+              >api.1know2see.com</a>
+            </header>
+            <ol class="works" id="works">
+              <li class="piece" data-project-id="1">
+                <a
+                  class="case"
+                  href="https://api.1know2see.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-label-zh="1know2see API，在新标签页打开接口"
+                  data-label-en="1know2see API, open the API in a new tab"
+                  aria-label="1know2see API，在新标签页打开接口"
+                >
+                  <div class="case-visual" aria-hidden="true">
+                    <div class="api-poster">
+                      <div class="api-poster-top">
+                        <span>01</span>
+                        <span>WORKER</span>
+                      </div>
+                      <p class="api-poster-word">API</p>
+                      <ul class="api-poster-routes">
+                        <li><span>GET</span><span>/projects</span></li>
+                        <li><span>GET</span><span>/health</span></li>
+                        <li><span>D1</span><span>database</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="case-meta">
+                    <p class="case-index"><span>01</span><span class="slash">/</span><span>01</span></p>
+                    <h3 class="case-title">1know2see API</h3>
+                    <p class="case-desc">
+                      <span class="zh">我的第一个 Cloudflare Workers 与 D1 项目</span>
+                      <span class="en" lang="en">My first Cloudflare Workers and D1 project</span>
+                    </p>
+                    <p class="case-facts">
+                      <span class="status">
+                        <span class="zh">在运行</span>
+                        <span class="en" lang="en">Active</span>
+                      </span>
+                      <time datetime="2026-10-25">2026-10-25</time>
+                    </p>
+                    <span class="case-go" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" width="16" height="16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              </li>
+            </ol>
+          </div>
           <p class="works-end reveal">
             <span class="zh">下一件，还在视线里。</span>
             <span class="en">The next one is still in sight.</span>
@@ -216,91 +270,89 @@
         </div>
       </section>
 
-      <section class="contact chapter" id="contact" aria-labelledby="contact-title">
-        <div class="wrap">
-          <header class="sec-head reveal">
-            <p class="idx">
-              <span class="zh">04 — 联系</span>
-              <span class="en">04 — Contact</span>
+      <section class="about chapter" id="about" aria-labelledby="about-title">
+        <div class="wrap about-grid">
+          <h2 class="sec-label" id="about-title">
+            <i class="dot" aria-hidden="true"></i>
+            <span class="zh">关于</span>
+            <span class="en">About</span>
+          </h2>
+          <div class="about-body reveal">
+            <p class="about-name" lang="zh-Hans" translate="no">一只见二</p>
+            <p class="about-latin" translate="no">1know2see</p>
+            <p class="about-copy">
+              <span class="zh">这是个人站。看见，是把事情想清楚之后的结果。名字来自一只见二：看见一件事，再看见它的另一面。想得更深，看得更远，把线索收成判断，再把它做出来。界面做清楚，系统做稳，文字留得住。</span>
+              <span class="en" lang="en">This is a personal site. Seeing is what remains after the thinking is clear. The name 一只见二 means seeing a thing, then seeing its other side. Think deeper, see further: gather the clues into a judgment, then make it. Clear interfaces, steady systems, words worth staying with.</span>
             </p>
-          </header>
-          <div class="contact-body reveal">
-            <h2 id="contact-title">
-              <a
-                class="contact-link"
-                href="https://github.com/1know2see"
-                target="_blank"
-                rel="me noopener noreferrer"
-                data-label-zh="从 GitHub 开始，在新标签页打开"
-                data-label-en="Start on GitHub, opens in a new tab"
-                aria-label="从 GitHub 开始，在新标签页打开"
-              >
-                <span class="label">
-                  <span class="zh">从 GitHub 开始。</span>
-                  <span class="en">Start on GitHub.</span>
-                </span>
-                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
-                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </h2>
-            <p class="contact-note">
-              <span class="zh">这里不设公开邮箱。仓库是目前的入口。</span>
-              <span class="en">No public email. The repository is the door.</span>
-            </p>
-            <a
-              class="contact-url"
-              href="https://github.com/1know2see"
-              target="_blank"
-              rel="me noopener noreferrer"
-              data-label-zh="github.com/1know2see，在新标签页打开"
-              data-label-en="github.com/1know2see, opens in a new tab"
-              aria-label="github.com/1know2see，在新标签页打开"
-            >github.com/1know2see</a>
+            <p class="brand-line" lang="en" data-field="tagline">Think deeper, see further</p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <p>© <span data-year>2026</span> <span data-field="name" translate="no">1know2see</span></p>
-        <p class="foot-mid">
-          <span class="zh" lang="zh-Hans">一只见二</span>
-          <span class="en" lang="en">Think deeper, see further</span>
+    <footer class="site-footer band-ink" id="contact">
+      <div class="wrap">
+        <p class="eyebrow">
+          <span class="zh">（联系）</span>
+          <span class="en">(Contact)</span>
         </p>
-        <div class="foot-end">
-          <p class="api-pill" id="api-status" hidden>
-            <span class="api-dot" aria-hidden="true"></span>
-            <span class="zh">接口在线</span>
-            <span class="en">API live</span>
-            <span class="api-ver"></span>
-          </p>
-          <div class="lang" role="group" data-label-zh="语言" data-label-en="Language" aria-label="语言">
-            <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
-            <span class="slash" aria-hidden="true">/</span>
-            <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-          </div>
+        <h2 class="footer-title">
           <a
+            class="footer-link"
             href="https://github.com/1know2see"
             target="_blank"
             rel="me noopener noreferrer"
-            data-label-zh="GitHub，在新标签页打开"
-            data-label-en="GitHub, opens in a new tab"
-            aria-label="GitHub，在新标签页打开"
-          >GitHub</a>
+            data-label-zh="从 GitHub 开始，在新标签页打开"
+            data-label-en="Start on GitHub, opens in a new tab"
+            aria-label="从 GitHub 开始，在新标签页打开"
+          >
+            <span class="label">
+              <span class="zh">从 GitHub 开始</span>
+              <span class="en">Start on GitHub</span>
+            </span>
+            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </h2>
+        <p class="footer-note">
+          <span class="zh">这里不设公开邮箱。仓库是目前的入口。</span>
+          <span class="en">No public email. The repository is the door.</span>
+        </p>
+        <a
+          class="footer-url"
+          href="https://github.com/1know2see"
+          target="_blank"
+          rel="me noopener noreferrer"
+          data-label-zh="github.com/1know2see，在新标签页打开"
+          data-label-en="github.com/1know2see, opens in a new tab"
+          aria-label="github.com/1know2see，在新标签页打开"
+        >github.com/1know2see</a>
+        <div class="footer-bar">
+          <p>© <span data-year>2026</span> <span data-field="name" translate="no">1know2see</span></p>
+          <p class="foot-mid">
+            <span class="zh" lang="zh-Hans">一只见二</span>
+            <span class="en brand-line" lang="en" data-field="tagline">Think deeper, see further</span>
+          </p>
+          <div class="foot-end">
+            <p class="api-pill" id="api-status" hidden>
+              <span class="api-dot" aria-hidden="true"></span>
+              <span class="zh">接口在线</span>
+              <span class="en">API live</span>
+              <span class="api-ver"></span>
+            </p>
+            <div class="lang" role="group" data-label-zh="语言" data-label-en="Language" aria-label="语言">
+              <button type="button" data-set-lang="zh" aria-pressed="true" data-label-zh="中文" data-label-en="Chinese" aria-label="中文">ZH</button>
+              <button type="button" data-set-lang="en" aria-pressed="false" data-label-zh="英文" data-label-en="English" aria-label="英文">EN</button>
+            </div>
+            <a class="to-top" href="#top">
+              <span class="zh">回到顶部</span>
+              <span class="en">Back to top</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
-
-    <div class="frame" aria-hidden="true">
-      <span class="tl"></span>
-      <span class="tr"></span>
-      <span class="bl"></span>
-      <span class="br"></span>
-    </div>
-    <noscript><style>#preloader{display:none!important}html{overflow:auto!important}</style></noscript>
-    <script src="/failsafe.js"></script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

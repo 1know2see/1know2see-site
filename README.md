@@ -2,7 +2,7 @@
 
 一只见二的个人站。Think deeper, see further。
 
-暗色、电影感、以文字为主。中文是正文，英文品牌名和 tagline 是视觉元素。页面会请求 [api.1know2see.com](https://api.1know2see.com)，失败时用内置的同一份已知数据，不挡住首屏。
+纸色底、近黑字、大号无衬线。中英切换都在。页面会请求 [api.1know2see.com](https://api.1know2see.com)，失败时用内置的同一份已知数据，不挡住首屏。
 
 ## 本地开发
 
@@ -62,7 +62,7 @@ npm run preview
 - 配置：`1know2see` / `Think deeper, see further` / `dark`
 - 作品：`1know2see API`，My first Cloudflare Workers and D1 project，active，2026-10-25
 
-站点按暗色设计。`theme` 会被读到，但不会因此切成浅色。
+页面是纸色与墨色。`theme` 会被读到，但不会因此改皮肤。
 
 作品列表以接口返回为准。和上面这份已知数据一致时，不重绘 DOM。以后接口里多了一件，页面会跟着渲染，不会编造链接或中文译名。只有名称正好是 `1know2see API` 的那一件会链到 `https://api.1know2see.com`。
 
@@ -83,12 +83,11 @@ Vary: Origin
 
 ## 字体
 
-SIL Open Font License，随仓库自托管，不请求 Google Fonts：
+SIL Open Font License，随仓库自托管，不请求 Google Fonts。来源是 fontsource 打包的 OFL 字体，不是商业字体：
 
-- Syne — 英文展示
-- Outfit — 界面和英文正文
-- Noto Serif SC — 中文标题
-- Noto Sans SC — 中文正文
+- Schibsted Grotesk — 拉丁文展示与正文
+- IBM Plex Mono — 索引、导航、括号短标签
+- Noto Sans SC — 中文，400 与 900
 
 许可证在 `public/fonts/licenses/`。
 
@@ -98,4 +97,4 @@ SIL Open Font License，随仓库自托管，不请求 Google Fonts：
 - `src/` — 样式、动效、语言、接口
 - `public/` — 字体、图标、社交图、`_headers`
 
-动效用 GSAP。`prefers-reduced-motion: reduce` 时跳过开场，也不做滚动位移。
+动效用 GSAP，只在视线那一节做逐行出现。`prefers-reduced-motion: reduce` 时不做位移。
