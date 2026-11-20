@@ -1,6 +1,7 @@
 import { FALLBACK_PROJECTS, loadSiteData, sameProjects } from "./api";
+import { initHeaderTone } from "./header";
 import { currentLang, initI18n } from "./i18n";
-import { bindWorkMotion, initFrame, initPreloader, initScrollMotion, initScrollSpy } from "./motion";
+import { bindWorkMotion, initScrollMotion, initScrollSpy } from "./motion";
 import { refreshWorkLabels, renderWorks } from "./works";
 
 function fieldLang(value: string): string {
@@ -41,16 +42,15 @@ document.addEventListener("langchange", () => {
 const year = document.querySelector("[data-year]");
 if (year) year.textContent = String(new Date().getFullYear());
 
-void document.fonts?.load('800 120px Syne');
-void document.fonts?.load('600 120px "Noto Serif SC"');
-void document.fonts?.load('400 20px Outfit');
-void document.fonts?.load('400 20px "Noto Sans SC"');
+void document.fonts?.load('900 16px "Schibsted Grotesk"');
+void document.fonts?.load('900 16px "Noto Sans SC"');
+void document.fonts?.load('400 16px "Schibsted Grotesk"');
+void document.fonts?.load('400 16px "Noto Sans SC"');
+void document.fonts?.load('400 16px "IBM Plex Mono"');
 
-initFrame();
+initHeaderTone();
 initScrollSpy();
-initPreloader(() => {
-  initScrollMotion();
-});
+initScrollMotion();
 
 void loadSiteData().then((data) => {
   applyConfig(data.config.name, data.config.tagline);

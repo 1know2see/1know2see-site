@@ -5,12 +5,12 @@ const COPY = {
     zh: {
       title: "1know2see — 一只见二",
       description:
-        "1know2see，一只见二。Think deeper, see further。个人工作室：把界面做清楚，把系统做稳，把文字留得住。",
+        "1know2see，一只见二。Think deeper, see further。个人站：把界面做清楚，把系统做稳，把文字留得住。",
     },
     en: {
       title: "1know2see — Think deeper, see further",
       description:
-        "1know2see. Think deeper, see further. A personal studio for clear interfaces, steady systems, and words worth staying with.",
+        "1know2see. Think deeper, see further. A personal site for clear interfaces, steady systems, and words worth staying with.",
     },
   },
   "404": {
