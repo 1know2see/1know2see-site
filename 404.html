@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-Hans" data-lang="zh" data-page="404">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>未见 — 1know2see</title>
+    <meta name="description" content="这一页不在视线里。" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#08090d" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="/boot.js"></script>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#content">
+      <span class="zh">跳到正文</span>
+      <span class="en">Skip to content</span>
+    </a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" translate="no">1know2see</a>
+        <nav class="nav" data-label-zh="页面" data-label-en="Sections" aria-label="页面">
+          <a href="/#work"><span class="zh">作品</span><span class="en">Work</span></a>
+          <a href="/#philosophy"><span class="zh">视线</span><span class="en">Sight</span></a>
+          <a href="/#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
+        </nav>
+        <div class="lang header-lang" role="group" data-label-zh="语言" data-label-en="Language" aria-label="语言">
+          <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
+          <span class="slash" aria-hidden="true">/</span>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </header>
+    <main class="miss-page" id="content" tabindex="-1">
+      <div class="sight sight-broken" aria-hidden="true">
+        <span class="sight-line a"></span>
+        <span class="sight-line b"></span>
+        <span class="sight-dot"></span>
+      </div>
+      <div class="wrap">
+        <p class="idx miss-kicker">404</p>
+        <h1 class="miss-title">
+          <span class="miss-ghost" aria-hidden="true">
+            <span class="zh">未见</span>
+            <span class="en">Unseen</span>
+          </span>
+          <span class="miss-solid">
+            <span class="zh">未见</span>
+            <span class="en">Unseen</span>
+          </span>
+        </h1>
+        <p class="miss-note">
+          <span class="zh">这一页不在视线里。</span>
+          <span class="en">This page is out of sight.</span>
+        </p>
+        <a class="back" href="/">
+          <span class="zh">回到首页</span>
+          <span class="en">Back home</span>
+        </a>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p>© <span data-year>2026</span> 1know2see</p>
+        <p class="foot-mid">
+          <span class="zh" lang="zh-Hans">一只见二</span>
+          <span class="en" lang="en">Think deeper, see further</span>
+        </p>
+        <div class="foot-end">
+          <div class="lang" role="group" data-label-zh="语言" data-label-en="Language" aria-label="语言">
+            <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
+            <span class="slash" aria-hidden="true">/</span>
+            <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <a
+            href="https://github.com/1know2see"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-label-zh="GitHub，在新标签页打开"
+            data-label-en="GitHub, opens in a new tab"
+            aria-label="GitHub，在新标签页打开"
+          >GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <div class="frame" aria-hidden="true">
+      <span class="tl"></span>
+      <span class="tr"></span>
+      <span class="bl"></span>
+      <span class="br"></span>
+    </div>
+    <script type="module" src="/src/notfound.ts"></script>
+  </body>
+</html>
